@@ -1,0 +1,11 @@
+course1:
+  name: "Course"
+  volume: "Volume"
+  annotation: "Annotation"
+  description_text: "Description text"
+
+course2:
+  name:
+  volume:
+  annotation:
+  description_text:
