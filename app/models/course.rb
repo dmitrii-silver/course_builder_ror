@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  has_many :unit_courses
+  has_many :unit_courses, dependent: :destroy
   has_many :units, through: :unit_courses
   
   validates :name, presence: true
