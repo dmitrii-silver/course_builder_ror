@@ -1,0 +1,33 @@
+<br>
+<br>
+<div class="columns">
+  <div class="column">
+    <h2 class="title is-pulled-left">Список курсов:</h2>
+  </div>
+  <div class="column is-one-fifth">
+    <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">+Новый курс</button>
+  </div>
+</div>
+
+<div class="downline"></div>
+
+<div class="content">
+  <% @courses.each do |course| %>
+    <table class="table is-fullwidth">
+      <tbody>
+        <tr>
+          <td>
+            <p class="is-italic has-text-weight-light"><%= course.volume %></p>
+            <h5 class="title is-5"><a><%= course.name %></a></h5>
+          </td>
+          <td>
+            <p>&nbsp;</p>
+            <div class="level-right">
+              <p class="has-text-weight-bold"><%= course.annotation %></p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
