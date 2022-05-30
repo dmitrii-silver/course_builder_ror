@@ -1,0 +1,31 @@
+<br>
+<br>
+<div class="columns">
+  <div class="column">
+    <h2 class="title is-pulled-left">Курс:</h2>
+  </div>
+  <div class="column is-one-fifth">
+    <form method="get" action="/courses/new">
+    <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button>
+    </form>
+  </div>
+</div>
+
+<div class="downline"></div>
+
+<h1 class="title is-3"><%= @course.name %></h1>
+<p class="is-italic has-text-weight-light"><%= @course.volume %></p>
+<p class="is-italic has-text-weight-light"><%= "Стоимость: #{@course.annotation}" %></p>
+<p class="is-italic has-text-weight-light">Описание курса:</p>
+<p class="is-italic has-text-weight-light"><%= @course.description_text %></p>
+
+<div class="columns">
+  <div class="column">
+    <h4 class="subtitle is-4 is-pulled-left">Список модулей:</h4>
+  </div>
+  <div class="column is-one-fifth">
+    <form method="get" action="/courses/new">
+    <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">+Новый модуль</button>
+    </form>
+  </div>
+</div>

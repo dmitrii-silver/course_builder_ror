@@ -1,0 +1,31 @@
+<h2 class="title is-1">Новый курс</h2>
+
+<div class="field">
+  <%= form_with model: @course do |form| %>
+    <label class="label">Название курса</label>
+    <div class="control">
+      <p><%= form.text_area :name %></p>
+    </div>
+
+    <label class="label">Объём в часах и колличество модулей</label>
+    <div class="control">
+      <p><%= form.text_area :volume %></p>
+    </div>
+
+    <label class="label">Стоимость</label>
+    <div class="control">
+      <p><%= form.text_area :annotation %></p>
+    </div>
+
+    <label class="label">Описание курса</label>
+    <div class="control">
+      <p><%= form.text_area :description_text %></p>
+    </div>
+
+    <div class="field is-grouped">
+  <div class="control">
+    <p><%= form.submit "Создать" %></p>
+  </div>
+</div>
+  <% end %>
+</div>
