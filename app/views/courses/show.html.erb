@@ -5,9 +5,9 @@
     <h2 class="title is-pulled-left">Курс:</h2>
   </div>
   <div class="column is-one-fifth">
-    <form method="get" action="/courses/new">
-    <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button>
-    </form>
+    
+    <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
+    <p><%= link_to 'Редактировать', edit_course_path(@course) %></p>
   </div>
 </div>
 

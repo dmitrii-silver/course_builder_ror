@@ -8,10 +8,11 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @course = Course.find_by id: params[:id]    
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = Course.find_by id: params[:id]
   end
 
   def create
@@ -21,6 +22,10 @@ class CoursesController < ApplicationController
   end
 
   def update
+    @course = Course.find(params[:id])
+    @course.update(course_params)
+
+    redirect_to course_path(@course)
   end
 
   def destroy

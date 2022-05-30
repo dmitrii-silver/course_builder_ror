@@ -1,4 +1,4 @@
-<h2 class="title is-1">Новый курс</h2>
+<h2 class="title is-1">Редактирование курса</h2>
 
 <%= form_with model: @course do |form| %>
   <p><%= form.label :name, "Название курса" %></p>
@@ -9,5 +9,5 @@
   <p><%= form.text_field :annotation %></p>
   <p><%= form.label :description_text, "Описание курса" %></p>
   <p><%= form.text_area :description_text, rows: 5 %></p>
-  <p><%= form.submit "Добавить" %></p>
+  <p><%= form.submit "Изменить" %></p>
 <% end %>
