@@ -7,13 +7,27 @@
   <div class="column is-one-fifth">
     
     <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
-    <p><%= link_to 'Редактировать', edit_course_path(@course) %></p>
+    <div>
+      <%= button_to 'Редактировать', edit_course_path(@course), method: :get %>
+    </div>  
   </div>
 </div>
 
 <div class="downline"></div>
 
-<h1 class="title is-3"><%= @course.name %></h1>
+<div class="columns">
+  <div class="column">
+    <h2 class="title is-pulled-left"><%= @course.name %></h2>
+  </div>
+  <div class="column is-one-fifth">
+    
+    <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
+  <div>
+    <%= button_to 'Удалить курс', course_path(@course), method: :delete %>
+  </div>
+  </div>
+</div>
+
 <p class="is-italic has-text-weight-light"><%= @course.volume %></p>
 <p class="is-italic has-text-weight-light"><%= "Стоимость: #{@course.annotation}" %></p>
 <p class="is-italic has-text-weight-light">Описание курса:</p>

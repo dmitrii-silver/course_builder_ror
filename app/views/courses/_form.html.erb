@@ -1,0 +1,11 @@
+<%= form_with model: @course do |form| %>
+  <p><%= form.label :name, "Название курса" %></p>
+  <p><%= form.text_area :name, rows: 5 %></p>
+  <p><%= form.label :volume, "Объём в часах и колличество модулей" %></p>
+  <p><%= form.text_field :volume %></p>
+  <p><%= form.label :annotation, "Стоимость" %></p>
+  <p><%= form.text_field :annotation %></p>
+  <p><%= form.label :description_text, "Описание курса" %></p>
+  <p><%= form.text_area :description_text, rows: 5 %></p>
+  <p><%= form.submit "Сохранить" %></p>
+<% end %>
