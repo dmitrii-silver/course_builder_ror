@@ -4,14 +4,14 @@ class UnitsController < ApplicationController
   end
 
   def index
-    @units = Unit.all
   end
 
-  def new    
+  def new
+    @unit = Unit.new
   end
 
   def create
-    @course = Course.find(3) #HARD
+    @course = Course.find(params[:id]) #only HARD
     @unit = @course.units.build(unit_params)
     @unit.save
     if @unit.save
@@ -19,7 +19,7 @@ class UnitsController < ApplicationController
       redirect_to courses_path(@course)
     else
       render 'new'
-    end    
+    end
   end
 
   def edit
@@ -29,11 +29,16 @@ class UnitsController < ApplicationController
   end
 
   def destroy
+    @unit = Unit.find(params[:id])
+    if @unit.present?
+      @unit.destroy
+    end
+    redirect_to courses_path
   end
 
   private
 
-  def unit_params    
+  def unit_params
     params.permit(:name, :position, :body)
   end
 end

@@ -1,1 +1,5 @@
-<h1>Show<%= @unit.name %></h1>
+<h1><%= @unit.name %></h1>
+<h1><%= @unit.body %></h1>
+<div>
+  <%= button_to 'Удалить курс', course_unit_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+</div>
