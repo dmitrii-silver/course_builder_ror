@@ -13,10 +13,28 @@
   </head>
     
   <body>
-    <%= render 'navbar' %>
+    <nav>
+      <div class="navbar-brand">
+        <%= image_tag("logo_logo.jpg", :alt => "Logo") %>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
     <div class="columns">
       <div class="column is-1">
-    <%= render 'menu' %>
+      <br>
+      <br>
+      <aside class="menu">
+        <ul class="menu-list">
+          <li><a href= "<%= root_path(@courses)%>" >Курсы</a></li>
+          <li><a>Модули</a></li>
+          <li><a>Настройки</a></li>
+        </ul>  
+      </aside>
       </div>
       <div class="column">
         <main>

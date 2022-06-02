@@ -9,7 +9,7 @@
     <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
     <div>
       <%= button_to 'Редактировать', edit_course_path(@course), method: :get %>
-    </div>  
+    </div>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
     
     <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
   <div>
-    <%= button_to 'Удалить курс', course_path(@course), method: :delete %>
+    <%= button_to 'Удалить курс', course_path(@course), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
   </div>
   </div>
 </div>
@@ -38,8 +38,13 @@
     <h4 class="subtitle is-4 is-pulled-left">Список модулей:</h4>
   </div>
   <div class="column is-one-fifth">
-    <form method="get" action="/courses/new">
-    <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">+Новый модуль</button>
-    </form>
+    <div>
+      <%= button_to '+Новый модуль', new_course_unit_path(@course), method: :get %>
+    </div> 
   </div>
+</div>
+<div>
+  <% @course.units.each do |unit| %>
+    <h4 class="subtitle is-4"><%= link_to unit.name , "/courses/#{@course.id}/units/#{unit.id}" %></h4>
+  <% end %>  
 </div>
