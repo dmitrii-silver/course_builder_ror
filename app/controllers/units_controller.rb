@@ -9,9 +9,9 @@ class UnitsController < ApplicationController
   def new
     @unit = Unit.new
   end
-
+  
   def create
-    @course = Course.find(params[:id]) #only HARD
+    @course = Course.find(params[:course_id])
     @unit = @course.units.build(unit_params)
     @unit.save
     if @unit.save
@@ -26,6 +26,10 @@ class UnitsController < ApplicationController
   end
 
   def update
+    @unit = Unit.find(params[:id])
+    @unit.update(course_params)
+
+    redirect_to course_path
   end
 
   def destroy
