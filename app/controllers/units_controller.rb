@@ -1,6 +1,8 @@
 class UnitsController < ApplicationController
+  before_action :set_unit, only: [:destroy, :update, :edit, :create, :new, :show]
+
   def show
-    @unit = Unit.find(params[:id])
+    @unit = @course.units.find(params[:id])
   end
 
   def index
@@ -11,36 +13,37 @@ class UnitsController < ApplicationController
   end
   
   def create
-    @course = Course.find(params[:course_id])
     @unit = @course.units.build(unit_params)
     @unit.save
     if @unit.save
-      flash[:success] = "Unit created!"
-      redirect_to courses_path(@course)
+      redirect_to course_path(@course)
     else
       render 'new'
     end
   end
 
-  def edit
+  def edit    
   end
 
   def update
-    @unit = Unit.find(params[:id])
-    @unit.update(course_params)
-
-    redirect_to course_path
+    @unit = @course.units.update(unit_params)
+    
+    redirect_to course_path(@course)
   end
 
-  def destroy
-    @unit = Unit.find(params[:id])
+  def destroy    
+    @unit = @course.units.find(params[:id])
     if @unit.present?
       @unit.destroy
     end
-    redirect_to courses_path
+    redirect_to course_path(@course)
   end
 
   private
+
+  def set_unit
+    @course = Course.find(params[:course_id])
+  end
 
   def unit_params
     params.permit(:name, :position, :body)

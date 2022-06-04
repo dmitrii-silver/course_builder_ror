@@ -1,8 +1,11 @@
 <h1><%= @unit.name %></h1>
 <h1><%= @unit.body %></h1>
-    <div>
-      <%= button_to 'Редактировать', edit_course_unit_path, method: :get %>
-    </div>
+<div>
+  <%= button_to 'Редактировать', edit_course_unit_path, method: :get %>
+</div>
+<div>
+  <%= button_to 'Вернуться', course_path(@course), method: :get %>
+</div>
 <div>
   <%= button_to 'Удалить курс', course_unit_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
 </div>

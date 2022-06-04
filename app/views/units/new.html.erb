@@ -10,3 +10,6 @@
   <p><%= form.text_area :body, rows: 5 %></p>
   <p><%= form.submit "Сохранить" %></p>
 <% end %>
+<div>
+  <%= button_to 'Вернуться', course_path(@course), method: :get %>
+</div>
