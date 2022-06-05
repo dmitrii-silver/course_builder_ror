@@ -17,8 +17,11 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
-
-    redirect_to course_path(@course)
+      if @course.save
+        redirect_to course_path(@course)
+      else
+        render 'new'
+      end
   end
 
   def update
