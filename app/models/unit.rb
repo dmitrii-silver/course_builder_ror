@@ -3,8 +3,6 @@ class Unit < ApplicationRecord
   has_many :courses, through: :unit_courses
   accepts_nested_attributes_for :courses
 
-  # scope :with_courses, -> { where_exists(:unit_course) }
-
   validates :name, presence: true
   validates :position, presence: true
   validates :body, presence: true
