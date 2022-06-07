@@ -104,4 +104,14 @@ RSpec.describe CoursesController, type: :controller do
       end
     end
   end
+
+  describe "destroy action" do
+    context "GET #destroy" do
+      it "return nil object" do
+        @course = Course.create(name: "Course", volume: "Volume", annotation: "Annotation", description_text: "Text")
+        @course.destroy        
+        expect(@course.destroyed?).to be(true)
+      end
+    end
+  end
 end
