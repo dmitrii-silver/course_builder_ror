@@ -107,10 +107,31 @@ RSpec.describe CoursesController, type: :controller do
 
   describe "destroy action" do
     context "GET #destroy" do
-      it "return nil object" do
+      it "confirm the object was destroyed" do
         @course = Course.create(name: "Course", volume: "Volume", annotation: "Annotation", description_text: "Text")
         @course.destroy        
         expect(@course.destroyed?).to be(true)
+      end
+    end
+  end
+
+  describe "edit action" do
+    context "GET #show" do
+    let(:course) { Course.create(
+      name: "Course",
+      volume: "Volume",
+      annotation: "Annotation",
+      description_text: "Text"
+      )
+    }
+      it "return a success response" do
+        get :edit, params: { id: course }
+        expect(response.status).to eq(200)
+      end
+      
+      it " return the update object" do
+        course.update(name: "New course", volume: "Volume", annotation: "Annotation", description_text: "Text")
+        expect(course.name).to eq("New course")
       end
     end
   end
