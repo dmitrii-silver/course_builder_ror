@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
     @course = Course.create(course_params)
       if @course.save
         redirect_to course_path(@course)
+        flash.now[:notice] = "Course created!"
       else
         render 'new'
       end

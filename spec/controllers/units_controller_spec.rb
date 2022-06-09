@@ -20,6 +20,37 @@ RSpec.describe UnitsController, type: :controller do
           )
         expect(course.valid?).to be false
       end
+
+      it "routes to the 'new' action" do
+        expect({ get: "/courses/123/units/new" }).to route_to(
+        controller: "units",
+        action: "new",
+        course_id: "123"
+        )
+      end
+    end
+  end
+
+  describe "show action" do
+    context "GET #show" do 
+      it "routes to the 'show' action" do
+        expect({ get: "/courses/123/units/456" }).to route_to(
+        controller: "units",
+        action: "show",
+        course_id: "123",
+        id: "456"
+        )
+      end
+    end
+  end
+
+  describe "destroy action" do
+    context "GET #destroy" do
+      it "confirm the object was destroyed" do
+        @unit = Unit.create(name: "Course", position: "3", body: "Text")
+        @unit.destroy        
+        expect(@unit.destroyed?).to be(true)
+      end
     end
   end
 end

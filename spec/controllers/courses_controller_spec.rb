@@ -116,7 +116,7 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe "edit action" do
-    context "GET #show" do
+    context "GET #edit" do
     let(:course) { Course.create(
       name: "Course",
       volume: "Volume",
@@ -130,7 +130,12 @@ RSpec.describe CoursesController, type: :controller do
       end
       
       it " return the update object" do
-        course.update(name: "New course", volume: "Volume", annotation: "Annotation", description_text: "Text")
+        course.update(
+          name: "New course",
+          volume: "Volume",
+          annotation: "Annotation",
+          description_text: "Text"
+          )
         expect(course.name).to eq("New course")
       end
     end
