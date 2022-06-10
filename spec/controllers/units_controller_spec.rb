@@ -53,4 +53,24 @@ RSpec.describe UnitsController, type: :controller do
       end
     end
   end
+
+  describe "update action" do
+    context "GET #update" do
+    let(:unit) { Unit.create(
+      name: "Unit",
+      position: "1",
+      body: "Body"
+      )
+    }
+      
+      it "return the update object" do
+        unit.update(
+          name: "New Unit",
+          position: "3",
+          body: "New Body"
+          )
+        expect(unit.name).to eq("New Unit")
+      end
+    end
+  end
 end

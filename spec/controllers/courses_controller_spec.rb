@@ -16,7 +16,7 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe "create action" do
-    context "GET #create" do
+    context "#create" do
       it "redirects to show" do
         post :create, params: {
           course: {
@@ -68,6 +68,11 @@ RSpec.describe CoursesController, type: :controller do
         get :show, params: { id: course }
         expect(response.status).to eq(200)
       end
+
+      it "renders the show template" do
+        get :show, params: { id: course }
+        expect(response).to render_template("show")
+      end
     end
   end
 
@@ -106,11 +111,38 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe "destroy action" do
-    context "GET #destroy" do
+    context "#destroy" do
       it "confirm the object was destroyed" do
-        @course = Course.create(name: "Course", volume: "Volume", annotation: "Annotation", description_text: "Text")
+        @course = Course.create(
+          name: "Course",
+          volume: "Volume",
+          annotation: "Annotation",
+          description_text: "Text"
+          )
         @course.destroy        
         expect(@course.destroyed?).to be(true)
+      end
+    end
+  end
+
+  describe "update action" do
+    context "#edit" do
+    let(:course) { Course.create(
+      name: "Course",
+      volume: "Volume",
+      annotation: "Annotation",
+      description_text: "Text"
+      )
+    }
+      
+      it " return the update object" do
+        course.update(
+          name: "New course",
+          volume: "Volume",
+          annotation: "Annotation",
+          description_text: "Text"
+          )
+        expect(course.name).to eq("New course")
       end
     end
   end
@@ -124,19 +156,14 @@ RSpec.describe CoursesController, type: :controller do
       description_text: "Text"
       )
     }
-      it "return a success response" do
+      it "renders the edit temptate" do
+        get :edit, params: { id: course }
+        expect(response).to render_template("edit")
+      end
+
+      it "has a 200 status code" do
         get :edit, params: { id: course }
         expect(response.status).to eq(200)
-      end
-      
-      it " return the update object" do
-        course.update(
-          name: "New course",
-          volume: "Volume",
-          annotation: "Annotation",
-          description_text: "Text"
-          )
-        expect(course.name).to eq("New course")
       end
     end
   end
