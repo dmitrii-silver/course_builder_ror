@@ -1,10 +1,9 @@
-<h2 class="title is-1">Новый курс</h2>
-<%= render 'form' %>
-<% flash.each do |type, msg| %>
+<div class="ml-5 mr-5">
+  <h2 class="title is-1">Новый курс</h2>
   <div>
-    <%= msg %>
+    <%= render 'form' %>
   </div>
-<% end %>
-<div>
-  <%= button_to 'Вернуться', courses_path, method: :get %>
+  <div>
+   <%= button_to 'Вернуться', courses_path, method: :get %>
+  </div>
 </div>

@@ -1,5 +1,10 @@
-<h2 class="title is-1">Редактирование курса</h2>
-<%= render 'form' %>
-<div>
-  <%= button_to 'Вернуться', course_path(@course), method: :get %>
+
+<div class="ml-5 mr-5">
+  <h2 class="title is-1">Редактирование курса</h2>
+  <div>
+    <%= render 'form' %>
+  </div>  
+  <div>
+    <%= button_to 'Вернуться', course_path(@course), method: :get %>
+  </div>
 </div>
