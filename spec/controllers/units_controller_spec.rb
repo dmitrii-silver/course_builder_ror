@@ -55,7 +55,7 @@ RSpec.describe UnitsController, type: :controller do
   end
 
   describe "update action" do
-    context "GET #update" do
+    context "#update" do
     let(:unit) { Unit.create(
       name: "Unit",
       position: "1",
@@ -70,6 +70,19 @@ RSpec.describe UnitsController, type: :controller do
           body: "New Body"
           )
         expect(unit.name).to eq("New Unit")
+      end
+    end
+  end
+
+  describe "edit action" do
+    context "GET #edit" do
+      it "renders the edit temptate" do
+        expect({ get: "/courses/123/units/456/edit" }).to route_to(
+        controller: "units",
+        action: "edit",
+        course_id: "123",
+        id: "456"
+        )
       end
     end
   end

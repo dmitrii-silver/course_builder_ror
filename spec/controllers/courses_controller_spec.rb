@@ -113,14 +113,14 @@ RSpec.describe CoursesController, type: :controller do
   describe "destroy action" do
     context "#destroy" do
       it "confirm the object was destroyed" do
-        @course = Course.create(
+        course = Course.create(
           name: "Course",
           volume: "Volume",
           annotation: "Annotation",
           description_text: "Text"
           )
-        @course.destroy        
-        expect(@course.destroyed?).to be(true)
+        course.destroy        
+        expect(course.destroyed?).to be(true)
       end
     end
   end
