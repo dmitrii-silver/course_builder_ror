@@ -1,11 +1,29 @@
-<h1><%= @unit.name %></h1>
-<h1><%= @unit.body %></h1>
-<div>
-  <%= button_to 'Редактировать', edit_course_unit_path, method: :get %>
-</div>
-<div>
-  <%= button_to 'Вернуться', course_path(@course), method: :get %>
-</div>
-<div>
-  <%= button_to 'Удалить модуль', course_unit_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+<div class="ml-5 mr-5">
+  <div class="columns">
+    <div class="column">
+      <h2 class="title is-pulled-left"><%= @unit.name %></h2>
+    </div>
+    <div class="column is-one-fifth">
+      <div>
+        <%= button_to 'Редактировать', edit_course_unit_path, method: :get %>
+      </div>
+      <div>
+        <%= button_to 'Вернуться', course_path(@course), method: :get %>
+      </div>
+    </div>
+  </div>
+
+  <div class="downline"></div>
+
+    <h2 class="title">Содержание модуля</h2>
+  <div class="content">
+    <%= @unit.body %>
+  </div>
+
+  <div>
+    <%= button_to 'Вернуться', course_path(@course), method: :get %>
+  </div>
+  <div>
+    <%= button_to 'Удалить модуль', course_unit_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+  </div>
 </div>

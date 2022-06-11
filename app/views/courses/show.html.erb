@@ -7,20 +7,16 @@
       <div>
         <%= button_to 'Редактировать', edit_course_path(@course), method: :get %>
       </div>
+      <div>
+        <%= button_to 'Вернуться', courses_path, method: :get %>
+      </div>
     </div>
   </div>
 
   <div class="downline"></div>
 
-  <div class="columns">
-    <div class="column">
-      <h2 class="title is-pulled-left"><%= @course.name %></h2>
-    </div>
-    <div class="column is-one-fifth">
-    <div>
-      <%= button_to 'Удалить курс', course_path(@course), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
-    </div>
-    </div>
+  <div>
+    <h2 class="title"><%= @course.name %></h2>
   </div>
 
   <p class="is-italic has-text-weight-light"><%= @course.volume %></p>
@@ -42,5 +38,10 @@
     <% @course.units.each do |unit| %>
       <h4 class="subtitle is-4"><%= link_to unit.name , "/courses/#{@course.id}/units/#{unit.id}" %></h4>
     <% end %>
+  </div>
+  <div class="mt-5">
+      <div>
+      <%= button_to 'Удалить курс', course_path(@course), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+    </div>
   </div>
 </div>

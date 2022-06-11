@@ -13,7 +13,7 @@
   </head>
     
   <body>
-    <div>
+    <div class="content">
       <nav>
         <div class="navbar-brand has-background-grey">
           <%= image_tag("logo_logo.jpg", :alt => "Logo") %>
@@ -26,10 +26,8 @@
         </div>
       </nav>
     </div>
-
-    <div class="columns mt-0">
+    <div class="columns">
       <div class="column is-1 has-background-grey">
-
         <aside class="menu mt-5">
           <ul class="menu-list">
             <li><a href= "<%= root_path(@courses)%>" >Курсы</a></li>
