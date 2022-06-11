@@ -1,15 +1,21 @@
+<div class="ml-5 mr-5">
 <h2 class="title is-1">Новый модуль</h2>
-
-<%= form_with url: course_units_path, method: "post" do |form| %>
-  <p><%= form.label :name, "Название модуля" %></p>
-  <p><%= form.text_area :name, rows: 5 %></p>
-  
-  <p><%= form.label :position, "Position" %></p>
-  <p><%= form.text_field :position %></p>
-  <p><%= form.label :body, "Содержание модуля" %></p>
-  <p><%= form.text_area :body, rows: 5 %></p>
-  <p><%= form.submit "Сохранить" %></p>
-<% end %>
-<div>
+  <div class="columns">
+    <div class="column is-four-fifths">
+    <%= form_with url: course_units_path, method: "post" do |form| %>
+      <p><%= form.label :name, "Название модуля" %></p>
+      <p><%= form.text_area :name, cols: 100 %></p> 
+      <p><%= form.label :body, "Содержание модуля" %></p>
+      <p><%= form.text_area :body, rows: 20, cols: 100 %></p>
+    </div>
+    <div class="column">
+      <p><%= form.label :position, "Позиция (номер)" %></p>
+      <p><%= form.text_field :position %></p>
+    </div>
+  </div>
+    <p><%= form.submit "Сохранить" %></p>
+    <% end %>
+  <div>
   <%= button_to 'Вернуться', course_path(@course), method: :get %>
+  </div>
 </div>

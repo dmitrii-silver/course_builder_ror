@@ -1,50 +1,46 @@
-<br>
-<br>
-<div class="columns">
-  <div class="column">
-    <h2 class="title is-pulled-left">Курс:</h2>
-  </div>
-  <div class="column is-one-fifth">
-    
-    <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
-    <div>
-      <%= button_to 'Редактировать', edit_course_path(@course), method: :get %>
+<div class="ml-5 mr-5">
+  <div class="columns">
+    <div class="column">
+      <h2 class="title is-pulled-left">Курс:</h2>
+    </div>
+    <div class="column is-one-fifth">
+      <div>
+        <%= button_to 'Редактировать', edit_course_path(@course), method: :get %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="downline"></div>
+  <div class="downline"></div>
 
-<div class="columns">
-  <div class="column">
-    <h2 class="title is-pulled-left"><%= @course.name %></h2>
+  <div class="columns">
+    <div class="column">
+      <h2 class="title is-pulled-left"><%= @course.name %></h2>
+    </div>
+    <div class="column is-one-fifth">
+    <div>
+      <%= button_to 'Удалить курс', course_path(@course), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+    </div>
+    </div>
   </div>
-  <div class="column is-one-fifth">
-    
-    <!-- <button class="button is-active has-background-grey-lighter is-pulled-rigth is-responsive">Редактировать</button> -->
+
+  <p class="is-italic has-text-weight-light"><%= @course.volume %></p>
+  <p class="is-italic has-text-weight-light"><%= "Стоимость: #{@course.annotation}" %></p>
+  <p class="is-italic has-text-weight-light">Описание курса:</p>
+  <p class="is-italic has-text-weight-light"><%= @course.description_text %></p>
+
+  <div class="columns">
+    <div class="column">
+      <h4 class="subtitle is-4 is-pulled-left">Список модулей:</h4>
+    </div>
+    <div class="column is-one-fifth">
+      <div>
+        <%= button_to '+Новый модуль', new_course_unit_path(@course), method: :get %>
+      </div>
+    </div>
+  </div>
   <div>
-    <%= button_to 'Удалить курс', course_path(@course), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
+    <% @course.units.each do |unit| %>
+      <h4 class="subtitle is-4"><%= link_to unit.name , "/courses/#{@course.id}/units/#{unit.id}" %></h4>
+    <% end %>
   </div>
-  </div>
-</div>
-
-<p class="is-italic has-text-weight-light"><%= @course.volume %></p>
-<p class="is-italic has-text-weight-light"><%= "Стоимость: #{@course.annotation}" %></p>
-<p class="is-italic has-text-weight-light">Описание курса:</p>
-<p class="is-italic has-text-weight-light"><%= @course.description_text %></p>
-
-<div class="columns">
-  <div class="column">
-    <h4 class="subtitle is-4 is-pulled-left">Список модулей:</h4>
-  </div>
-  <div class="column is-one-fifth">
-    <div>
-      <%= button_to '+Новый модуль', new_course_unit_path(@course), method: :get %>
-    </div>
-  </div>
-</div>
-<div>
-  <% @course.units.each do |unit| %>
-    <h4 class="subtitle is-4"><%= link_to unit.name , "/courses/#{@course.id}/units/#{unit.id}" %></h4>
-  <% end %>
 </div>
