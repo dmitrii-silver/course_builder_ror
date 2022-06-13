@@ -3,14 +3,28 @@
   <div class="columns">
     <div class="column is-four-fifths">
     <%= form_with url: course_unit_path, method: "put" do |form| %>
-      <p><%= form.label :name, "Название модуля" %></p>
-      <p><%= form.text_area :name, cols: 100 %></p>
-      <p><%= form.label :body, "Содержание модуля" %></p>
-      <p><%= form.text_area :body, rows: 20, cols: 100 %></p>
+      <div class="field">
+        <%= form.label :name, "Название модуля" %>
+        <div class="control">
+          <%= form.text_area :name, class: "textarea" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :body, "Содержание модуля" %>
+        <div class="control">
+          <%= form.text_area :body, class: "textarea", rows: 15 %>
+        </div>
+      </div>
     </div>
+
     <div class="column">
-      <p><%= form.label :position, "Позиция (номер)" %></p>
-      <p><%= form.text_field :position %></p>
+      <div class="field">
+        <%= form.label :position, "Позиция (номер)" %>
+        <div class="control">
+          <%= form.text_field :position, class: "input" %>
+        </div>
+      </div>
     </div>
   </div>
     <p><%= form.submit "Сохранить" %></p>

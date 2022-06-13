@@ -7,17 +7,17 @@
     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
     
   <body>
     <div>
-    <div class="content">
+    <div class="content has-background-grey-light">
       <nav>
-        <div class="navbar-brand has-background-grey">
-          <%= image_tag("logo_logo.jpg", :alt => "Logo") %>
+        <div class="navbar-brand">
+          <%= image_tag("logo_logo.jpg", alt: "Logo") %>
     
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -28,7 +28,8 @@
       </nav>
     </div>
     <div class="columns">
-      <div class="column is-1 has-background-grey">
+      <div class="column is-1">
+        <section class="hero is-fullheight">
         <aside class="menu mt-5">
           <ul class="menu-list">
             <li><a href= "<%= root_path(@courses)%>" >Курсы</a></li>
@@ -36,13 +37,13 @@
             <li><a>Настройки</a></li>
           </ul>  
         </aside>
+        </section>
       </div>
-      <div class="column">
-        <div class="has-background-grey-lighter">
+      <div class="column is-10">
+        <section class="hero is-fullheight">
           <%= yield %>
-        </div>
+        </section>
       </div>
-      <div class="column is-1 has-background-grey"></div>
     </div>
     <footer class="footer">
       <div class="content has-text-centered">

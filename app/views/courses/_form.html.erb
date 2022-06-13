@@ -1,16 +1,35 @@
 <div class="columns">
   <div class="column is-four-fifths">
-<%= form_with model: @course do |form| %>
-    <p><%= form.label :name, "Название курса" %></p>
-    <p><%= form.text_area :name, cols: 100 %></p>
-    <p><%= form.label :description_text, "Описание курса" %></p>
-    <p><%= form.text_area :description_text, rows: 20, cols: 100 %></p>
+    <%= form_with model: @course do |form| %>
+    <div class="field">
+      <%= form.label :name, "Название курса" %>
+      <div class="control">
+        <%= form.text_area :name, class: "textarea" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :description_text, "Описание курса" %>
+      <div class="control">
+      <%= form.text_area :description_text, class: "textarea", rows: 15 %>
+      </div>
+    </div>
   </div>
-  <div class="column">  
-    <p><%= form.label :volume, "Объём в часах" %></p>
-    <p><%= form.text_field :volume %></p>
-    <p><%= form.label :annotation, "Стоимость" %></p>
-    <p><%= form.text_field :annotation %></p>
+
+  <div class="column">
+    <div class="field">  
+      <%= form.label :volume, "Объём в часах" %>
+      <div class="control">
+        <%= form.text_field :volume, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :annotation, "Стоимость" %>
+        <div class="control">
+          <%= form.text_field :annotation, class: "input" %>
+        </div>
+    </div>    
   </div>
 </div>
 <p><%= form.submit "Сохранить" %></p>
