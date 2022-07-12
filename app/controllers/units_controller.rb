@@ -16,25 +16,32 @@ class UnitsController < ApplicationController
     @unit = @course.units.build(unit_params)
     @unit.save
     if @unit.save
+      flash[:success] = "Module created!"
       redirect_to course_path(@course)
     else
-      render 'new'
+      render :new
     end
   end
 
-  def edit    
+  def edit
+    @unit = @course.units.find(params[:id])    
   end
 
   def update
     @unit = @course.units.update(unit_params)
-    
-    redirect_to course_path(@course)
+    if @course.save
+      flash[:success] = "Module updated!"
+      redirect_to course_path(@course)
+    else
+      render :edit 
+    end
   end
 
   def destroy    
     @unit = @course.units.find(params[:id])
     if @unit.present?
       @unit.destroy
+      flash[:success] = "Module deleted!"
     end
     redirect_to course_path(@course)
   end

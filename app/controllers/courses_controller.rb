@@ -19,22 +19,28 @@ class CoursesController < ApplicationController
     @course = Course.create(course_params)
       if @course.save
         redirect_to course_path(@course)
-        flash.now[:notice] = "Course created!"
+        flash[:success] = "Course created!"
       else
-        render 'new'
+        render :new
       end
   end
 
   def update
     @course.update(course_params)
-
-    redirect_to course_path(@course)
+      if @course.save
+        flash[:success] = "Course updated!"
+        redirect_to course_path(@course)
+      else
+        render :edit  
+      end  
   end
 
   def destroy
     @course.destroy
-
-    redirect_to courses_path
+    
+      flash[:success] = "Course deleted!"
+      redirect_to courses_path
+    
   end
 
   private
