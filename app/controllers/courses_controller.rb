@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
         redirect_to course_path(@course)
         flash[:success] = "Course created!"
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
   end
 
@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
         flash[:success] = "Course updated!"
         redirect_to course_path(@course)
       else
-        render :edit  
+        render :edit, status: :unprocessable_entity  
       end  
   end
 

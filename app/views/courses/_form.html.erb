@@ -1,3 +1,8 @@
+<% if @course.errors.any? %>
+  <% @course.errors.full_messages.each do |message|%>
+  <h3><%= message %> </h3>
+  <%end%>
+<%end%>
 <div class="columns">
   <div class="column is-four-fifths">
     <%= form_with model: @course do |form| %>
@@ -40,6 +45,8 @@
   <% if current_page?(controller: 'courses', action: 'new') %>
     <%= button_to 'Вернуться', courses_path, method: :get, class: "button is-link" %>
   <% elsif current_page?(controller: 'courses', action: 'edit') %>
-    <%= button_to 'Вернуться', course_path(@course), method: :get, class: "button is-link" %> 
+    <%= button_to 'Вернуться', course_path(@course), method: :get, class: "button is-link" %>
+  <% else %>
+    <%= button_to 'Вернуться', courses_path, method: :get, class: "button is-link" %>
   <% end %>
 </div>

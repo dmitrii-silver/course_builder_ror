@@ -41,7 +41,7 @@
       </div>
       <div class="column is-10">
         <% flash.each do |k, v| %>
-          <%= tag.div v, class: "notification is-#{k}" %>  
+          <%= tag.div v, class: "notification is-#{k}" %>
         <% end %>  
         <section class="hero is-fullheight">
           <%= yield %>

@@ -33,11 +33,11 @@ class UnitsController < ApplicationController
       flash[:success] = "Module updated!"
       redirect_to course_path(@course)
     else
-      render :edit 
+      render :edit
     end
   end
 
-  def destroy    
+  def destroy
     @unit = @course.units.find(params[:id])
     if @unit.present?
       @unit.destroy
