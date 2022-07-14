@@ -36,7 +36,7 @@
   </div>
   <div>
     <% @course.units.each do |unit| %>
-      <h4 class="subtitle is-4"><%= link_to unit.name , "/courses/#{@course.id}/units/#{unit.id}" %></h4>
+      <h4 class="subtitle is-4"><%= link_to unit.name, course_unit_path(@course, unit.id) %></h4>
     <% end %>
   </div>
   <div class="mt-5">
