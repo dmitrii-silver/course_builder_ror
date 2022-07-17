@@ -1,6 +1,6 @@
 <% if @course.errors.any? %>
   <% @course.errors.full_messages.each do |message|%>
-  <h3><%= message %> </h3>
+  <p class="help is-danger"><%= message %> </p>
   <%end%>
 <%end%>
 <div class="columns">

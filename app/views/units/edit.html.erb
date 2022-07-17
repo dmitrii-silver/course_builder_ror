@@ -2,7 +2,7 @@
 <h2 class="title is-1">Редактирование модуля</h2>
   <div class="columns">
     <div class="column is-four-fifths">
-    <%= form_with url: course_unit_path, method: "put" do |form| %>
+    <%= form_with model: [@course, @unit] do |form| %>
       <div class="field">
         <%= form.label :name, "Название модуля" %>
         <div class="control">

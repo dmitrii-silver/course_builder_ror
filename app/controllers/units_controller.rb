@@ -1,11 +1,8 @@
 class UnitsController < ApplicationController
-  before_action :set_unit, only: [:destroy, :update, :edit, :create, :new, :show]
+  before_action :set_course, only: [:destroy, :update, :edit, :create, :new, :show]
+  before_action :set_unit, only: [:destroy, :update, :edit, :show]
 
   def show
-    @unit = @course.units.find(params[:id])
-  end
-
-  def index
   end
 
   def new
@@ -24,12 +21,10 @@ class UnitsController < ApplicationController
   end
 
   def edit
-    @unit = @course.units.find(params[:id])    
   end
 
   def update
-    @unit = @course.units.update(unit_params)
-    if @course.save
+    if @unit.update(unit_params)
       flash[:success] = "Module updated!"
       redirect_to course_path(@course)
     else
@@ -38,7 +33,6 @@ class UnitsController < ApplicationController
   end
 
   def destroy
-    @unit = @course.units.find(params[:id])
     if @unit.present?
       @unit.destroy
       flash[:success] = "Module deleted!"
@@ -48,11 +42,15 @@ class UnitsController < ApplicationController
 
   private
 
-  def set_unit
+  def set_course
     @course = Course.find(params[:course_id])
   end
 
+  def set_unit
+    @unit = @course.units.find(params[:id])
+  end
+
   def unit_params
-    params.permit(:name, :position, :body)
+    params.require(:unit).permit(:name, :position, :body)
   end
 end

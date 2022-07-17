@@ -36,11 +36,15 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    # All related modules are removed so as not to pollute the database,
+    # while there is no module attachment function
+    @course.units.each do |unit|
+      unit.destroy
+     end
     @course.destroy
     
       flash[:success] = "Course deleted!"
       redirect_to courses_path
-    
   end
 
   private
